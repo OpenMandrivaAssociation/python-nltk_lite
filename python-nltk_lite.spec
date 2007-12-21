@@ -19,6 +19,7 @@ BuildRequires:  epydoc
 %endif
 %py_requires -d
 BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 The Natural Langauge Toolkit is a Python package that simplifies the 
