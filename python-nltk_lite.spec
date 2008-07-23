@@ -3,7 +3,7 @@
 
 Name:           python-%{origname}
 Version:        0.7.5
-Release:        %mkrel 1
+Release:        %mkrel 3
 Epoch:          0
 Summary:        Natural Language Toolkit for Python
 License:        CPL
