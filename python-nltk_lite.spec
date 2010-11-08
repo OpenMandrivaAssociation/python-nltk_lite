@@ -17,7 +17,7 @@ Requires:       python-yaml
 %if %with doc
 BuildRequires:  epydoc
 %endif
-%py_requires -d
+BuildRequires:	python
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -60,6 +60,8 @@ popd
                %{buildroot}%{py_puresitedir}/nltk_lite/stem/porter.py \
                %{buildroot}%{_datadir}/nltk_lite/doc/tree2image.py
 
+rm -fr %{buildroot}%{py_puresitedir}/yaml
+
 %clean
 %{__rm} -rf %{buildroot}
 
@@ -68,5 +70,4 @@ popd
 %doc *.txt
 %defattr(-,root,root,0755)
 %{py_puresitedir}/nltk_lite*
-%exclude %{py_puresitedir}/yaml
 %{_datadir}/nltk_lite
