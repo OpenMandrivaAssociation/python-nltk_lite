@@ -3,7 +3,7 @@
 
 Name:           python-%{origname}
 Version:        0.7.5
-Release:        %mkrel 4
+Release:        5
 Epoch:          0
 Summary:        Natural Language Toolkit for Python
 License:        CPL
@@ -19,7 +19,6 @@ BuildRequires:  epydoc
 %endif
 BuildRequires:	python
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 The Natural Langauge Toolkit is a Python package that simplifies the 
@@ -43,10 +42,9 @@ popd
 %endif
 
 %install
-%{__rm} -rf %{buildroot}
 %{__python} setup.py install -O2 --root=%{buildroot} --record=INSTALLED_FILES
 %{__mkdir_p} %{buildroot}%{_datadir}/nltk_lite
-%{__cp} -a corpora doc examples %{buildroot}%{_datadir}/nltk_lite
+cp -r -a corpora doc examples %{buildroot}%{_datadir}/nltk_lite
 %{_bindir}/find %{buildroot} -type f -name '*.txt' | %{_bindir}/xargs %{__perl} -pi -e 's|\r$||g'
 
 %{__chmod} 755 %{buildroot}%{_datadir}/nltk_lite/doc/examples.py \
@@ -62,12 +60,41 @@ popd
 
 rm -fr %{buildroot}%{py_puresitedir}/yaml
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
 %defattr(0644,root,root,0755)
 %doc *.txt
 %defattr(-,root,root,0755)
 %{py_puresitedir}/nltk_lite*
 %{_datadir}/nltk_lite
+
+
+%changelog
+* Mon Nov 08 2010 Funda Wang <fwang@mandriva.org> 0:0.7.5-4mdv2011.0
++ Revision: 594973
+- rebuild for py 2.7
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 0:0.7.5-4mdv2010.0
++ Revision: 430850
+- rebuild
+
+* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 0:0.7.5-3mdv2009.0
++ Revision: 242424
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sat Jun 02 2007 David Walluck <walluck@mandriva.org> 0:0.7.5-1mdv2008.0
++ Revision: 34462
+- 0.7.5
+- disable doc compilation (broken)
+- move extra files from %%doc to %%{_datadir}/nltk_lite
+
+
+* Mon Sep 04 2006 David Walluck <walluck@mandriva.org> 0:0.6.5-2mdv2007.0
+- add corpora and doc package as %%doc for now
+
+* Mon Sep 04 2006 David Walluck <walluck@mandriva.org> 0:0.6.5-1mdv2007.0
+- release
+
