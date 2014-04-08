@@ -13,6 +13,7 @@ Source0:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-%{version}.tar.gz
 Source1:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-corpora-%{version}.zip
 Source2:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-doc-%{version}.zip
 Source3:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-examples-%{version}.zip
+Source100:	%{name}.rpmlintrc
 Requires:       python-yaml
 %if %with doc
 BuildRequires:  epydoc
@@ -66,35 +67,3 @@ rm -fr %{buildroot}%{py_puresitedir}/yaml
 %defattr(-,root,root,0755)
 %{py_puresitedir}/nltk_lite*
 %{_datadir}/nltk_lite
-
-
-%changelog
-* Mon Nov 08 2010 Funda Wang <fwang@mandriva.org> 0:0.7.5-4mdv2011.0
-+ Revision: 594973
-- rebuild for py 2.7
-
-* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 0:0.7.5-4mdv2010.0
-+ Revision: 430850
-- rebuild
-
-* Wed Jul 23 2008 Thierry Vignaud <tv@mandriva.org> 0:0.7.5-3mdv2009.0
-+ Revision: 242424
-- rebuild
-- kill re-definition of %%buildroot on Pixel's request
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-* Sat Jun 02 2007 David Walluck <walluck@mandriva.org> 0:0.7.5-1mdv2008.0
-+ Revision: 34462
-- 0.7.5
-- disable doc compilation (broken)
-- move extra files from %%doc to %%{_datadir}/nltk_lite
-
-
-* Mon Sep 04 2006 David Walluck <walluck@mandriva.org> 0:0.6.5-2mdv2007.0
-- add corpora and doc package as %%doc for now
-
-* Mon Sep 04 2006 David Walluck <walluck@mandriva.org> 0:0.6.5-1mdv2007.0
-- release
-
