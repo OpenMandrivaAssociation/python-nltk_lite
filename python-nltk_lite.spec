@@ -8,7 +8,7 @@ Epoch:          0
 Summary:        Natural Language Toolkit for Python
 License:        CPL
 Group:          Development/Python
-URL:            http://nltk.sourceforge.net/
+URL:            https://nltk.sourceforge.net/
 Source0:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-%{version}.tar.gz
 Source1:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-corpora-%{version}.zip
 Source2:        http://ovh.dl.sourceforge.net/nltk/nltk_lite-doc-%{version}.zip
